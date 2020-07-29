@@ -1,0 +1,38 @@
+[
+  'game-0': GameInfo {
+    total_kills: 11,
+    players: [ 'Isgalamido', 'Dono da Bola', 'Mocinha' ],
+    kills: [ Isgalamido: -7 ],
+    kills_by_means: [ MOD_TRIGGER_HURT: 7, MOD_ROCKET_SPLASH: 3, MOD_FALLING: 1 ]
+  },
+  'game-1': GameInfo {
+    total_kills: 130,
+    players: [
+      'Oootsimo',
+      'Isgalamido',
+      'Zeh',
+      'Dono da Bola',
+      'Mal',
+      'Assasinu Credi',
+      'Chessus!',
+      'Chessus'
+    ],
+    kills: [
+      Zeh: 8,
+      'Dono da Bola': 10,
+      'Assasinu Credi': 19,
+      Oootsimo: 20,
+      Mal: -3,
+      Isgalamido: 14
+    ],
+    kills_by_means: [
+      MOD_FALLING: 7,
+      MOD_TRIGGER_HURT: 20,
+      MOD_ROCKET_SPLASH: 49,
+      MOD_ROCKET: 29,
+      MOD_SHOTGUN: 7,
+      MOD_RAILGUN: 9,
+      MOD_MACHINEGUN: 9
+    ]
+  }
+]

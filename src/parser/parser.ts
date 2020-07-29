@@ -148,7 +148,8 @@ export default class Parser {
                     })
                 }
             })
-
+            
+            console.log(deploy)
             fs.writeFile(deploy, util.inspect(this.result), () => { })
             console.log({ games: this.result }, { rank: this.rank })
             callback && callback(this.result)
