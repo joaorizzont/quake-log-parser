@@ -1,0 +1,10 @@
+{
+  "name": "quake-log-parser",
+  "version": "1.0.0",
+  "main": "index.js",
+  "license": "MIT",
+  "devDependencies": {
+    "sucrase": "^3.15.0",
+    "typescript": "^3.9.7"
+  }
+}
