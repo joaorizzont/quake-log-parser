@@ -1,0 +1,399 @@
+[
+  'game-0': GameInfo {
+    total_kills: 0,
+    players: [ 'Isgalamido' ],
+    kills: [],
+    kills_by_means: []
+  },
+  'game-1': GameInfo {
+    total_kills: 11,
+    players: [ 'Isgalamido', 'Dono da Bola', 'Mocinha' ],
+    kills: [ Isgalamido: -1 ],
+    kills_by_means: [ MOD_ROCKET_SPLASH: 3 ]
+  },
+  'game-2': GameInfo {
+    total_kills: 4,
+    players: [ 'Dono da Bola', 'Mocinha', 'Isgalamido', 'Zeh' ],
+    kills: [ Isgalamido: 1 ],
+    kills_by_means: [ MOD_ROCKET: 1 ]
+  },
+  'game-3': GameInfo {
+    total_kills: 105,
+    players: [ 'Dono da Bola', 'Isgalamido', 'Zeh', 'Assasinu Credi' ],
+    kills: [
+      'Dono da Bola': 12,
+      Isgalamido: 27,
+      Zeh: 22,
+      'Assasinu Credi': 14
+    ],
+    kills_by_means: [
+      MOD_ROCKET: 20,
+      MOD_RAILGUN: 8,
+      MOD_ROCKET_SPLASH: 51,
+      MOD_MACHINEGUN: 4,
+      MOD_SHOTGUN: 2
+    ]
+  },
+  'game-4': GameInfo {
+    total_kills: 14,
+    players: [ 'Dono da Bola', 'Isgalamido', 'Zeh', 'Assasinu Credi' ],
+    kills: [ Isgalamido: 2, Zeh: 2, 'Assasinu Credi': 1 ],
+    kills_by_means: [ MOD_ROCKET: 4, MOD_ROCKET_SPLASH: 4, MOD_RAILGUN: 1 ]
+  },
+  'game-5': GameInfo {
+    total_kills: 29,
+    players: [
+      'Fasano Again',
+      'Oootsimo',
+      'Isgalamido',
+      'Zeh',
+      'Dono da Bola',
+      'UnnamedPlayer',
+      'Maluquinho',
+      'Assasinu Credi',
+      'Mal'
+    ],
+    kills: [
+      Oootsimo: 9,
+      Isgalamido: 4,
+      Zeh: 8,
+      'Dono da Bola': 2,
+      Maluquinho: 1,
+      'Assasinu Credi': 1
+    ],
+    kills_by_means: [
+      MOD_ROCKET: 5,
+      MOD_RAILGUN: 2,
+      MOD_SHOTGUN: 4,
+      MOD_ROCKET_SPLASH: 13,
+      MOD_MACHINEGUN: 1
+    ]
+  },
+  'game-6': GameInfo {
+    total_kills: 130,
+    players: [
+      'Oootsimo',
+      'Isgalamido',
+      'Zeh',
+      'Dono da Bola',
+      'Mal',
+      'Assasinu Credi',
+      'Chessus!',
+      'Chessus'
+    ],
+    kills: [
+      'Assasinu Credi': 16,
+      'Dono da Bola': 10,
+      Oootsimo: 24,
+      Zeh: 12,
+      Isgalamido: 16,
+      Mal: 9
+    ],
+    kills_by_means: [
+      MOD_ROCKET_SPLASH: 49,
+      MOD_ROCKET: 29,
+      MOD_SHOTGUN: 7,
+      MOD_RAILGUN: 9,
+      MOD_MACHINEGUN: 9
+    ]
+  },
+  'game-7': GameInfo {
+    total_kills: 89,
+    players: [
+      'Oootsimo',
+      'Isgalamido',
+      'Zeh',
+      'Dono da Bola',
+      'Mal',
+      'Assasinu Credi'
+    ],
+    kills: [
+      Isgalamido: 24,
+      'Assasinu Credi': 10,
+      Zeh: 15,
+      'Dono da Bola': 1,
+      Oootsimo: 15,
+      Mal: -1
+    ],
+    kills_by_means: [
+      MOD_ROCKET: 18,
+      MOD_ROCKET_SPLASH: 39,
+      MOD_RAILGUN: 12,
+      MOD_MACHINEGUN: 4,
+      MOD_SHOTGUN: 1
+    ]
+  },
+  'game-8': GameInfo {
+    total_kills: 67,
+    players: [
+      'Oootsimo',
+      'Isgalamido',
+      'Zeh',
+      'Dono da Bola',
+      'Mal',
+      'Assasinu Credi',
+      'Chessus!',
+      'Chessus'
+    ],
+    kills: [
+      Oootsimo: 7,
+      Mal: 5,
+      'Dono da Bola': 1,
+      Zeh: 15,
+      'Assasinu Credi': 5,
+      Isgalamido: 2,
+      Chessus: 9
+    ],
+    kills_by_means: [
+      MOD_ROCKET_SPLASH: 25,
+      MOD_SHOTGUN: 1,
+      MOD_ROCKET: 17,
+      MOD_MACHINEGUN: 3,
+      MOD_RAILGUN: 10
+    ]
+  },
+  'game-9': GameInfo {
+    total_kills: 60,
+    players: [
+      'Oootsimo',
+      'Dono da Bola',
+      'Zeh',
+      'Chessus',
+      'Mal',
+      'Assasinu Credi',
+      'Isgalamido'
+    ],
+    kills: [
+      Mal: 6,
+      'Assasinu Credi': 5,
+      'Dono da Bola': 5,
+      Chessus: 6,
+      Zeh: 9,
+      Isgalamido: 8,
+      Oootsimo: 1
+    ],
+    kills_by_means: [
+      MOD_TELEFRAG: 25,
+      MOD_ROCKET: 4,
+      MOD_ROCKET_SPLASH: 1,
+      MOD_RAILGUN: 7,
+      MOD_BFG_SPLASH: 2,
+      MOD_BFG: 2,
+      MOD_MACHINEGUN: 1
+    ]
+  },
+  'game-10': GameInfo {
+    total_kills: 20,
+    players: [
+      'Dono da Bola',
+      'Isgalamido',
+      'Zeh',
+      'Oootsimo',
+      'Chessus',
+      'Assasinu Credi',
+      'UnnamedPlayer',
+      'Mal'
+    ],
+    kills: [ Oootsimo: 4, Isgalamido: 5, 'Dono da Bola': 1 ],
+    kills_by_means: [
+      MOD_ROCKET_SPLASH: 4,
+      MOD_BFG_SPLASH: 3,
+      MOD_MACHINEGUN: 1,
+      MOD_RAILGUN: 4
+    ]
+  },
+  'game-11': GameInfo {
+    total_kills: 160,
+    players: [
+      'Isgalamido',
+      'Dono da Bola',
+      'Zeh',
+      'Oootsimo',
+      'Chessus',
+      'Assasinu Credi',
+      'Mal'
+    ],
+    kills: [
+      'Assasinu Credi': 19,
+      Zeh: 10,
+      Isgalamido: 22,
+      Chessus: 15,
+      Oootsimo: 20,
+      Mal: 6,
+      'Dono da Bola': 11
+    ],
+    kills_by_means: [
+      MOD_RAILGUN: 38,
+      MOD_ROCKET_SPLASH: 35,
+      MOD_BFG_SPLASH: 8,
+      MOD_ROCKET: 25,
+      MOD_MACHINEGUN: 7,
+      MOD_BFG: 8
+    ]
+  },
+  'game-12': GameInfo {
+    total_kills: 6,
+    players: [
+      'Isgalamido',
+      'Dono da Bola',
+      'Zeh',
+      'Oootsimo',
+      'Chessus',
+      'Assasinu Credi',
+      'Mal'
+    ],
+    kills: [ Oootsimo: 0, Zeh: 2 ],
+    kills_by_means: [
+      MOD_ROCKET: 1,
+      MOD_ROCKET_SPLASH: 1,
+      MOD_BFG_SPLASH: 1,
+      MOD_BFG: 1
+    ]
+  },
+  'game-13': GameInfo {
+    total_kills: 122,
+    players: [
+      'Isgalamido',
+      'Dono da Bola',
+      'Zeh',
+      'Oootsimo',
+      'Chessus',
+      'Assasinu Credi',
+      'Mal'
+    ],
+    kills: [
+      Isgalamido: 25,
+      Chessus: 10,
+      'Assasinu Credi': 4,
+      'Dono da Bola': 7,
+      Zeh: 10,
+      Oootsimo: 12,
+      Mal: 0
+    ],
+    kills_by_means: [
+      MOD_RAILGUN: 20,
+      MOD_ROCKET: 23,
+      MOD_ROCKET_SPLASH: 24,
+      MOD_MACHINEGUN: 4,
+      MOD_BFG_SPLASH: 10,
+      MOD_BFG: 5
+    ]
+  },
+  'game-14': GameInfo {
+    total_kills: 3,
+    players: [
+      'Zeh',
+      'Assasinu Credi',
+      'Dono da Bola',
+      'Fasano Again',
+      'Isgalamido',
+      'Oootsimo'
+    ],
+    kills: [],
+    kills_by_means: []
+  },
+  'game-15': GameInfo {
+    total_kills: 0,
+    players: [
+      'Dono da Bola',
+      'Oootsimo',
+      'Isgalamido',
+      'Assasinu Credi',
+      'Zeh'
+    ],
+    kills: [],
+    kills_by_means: []
+  },
+  'game-16': GameInfo {
+    total_kills: 13,
+    players: [
+      'Dono da Bola',
+      'Oootsimo',
+      'Isgalamido',
+      'Assasinu Credi',
+      'Zeh',
+      'UnnamedPlayer',
+      'Mal'
+    ],
+    kills: [ Isgalamido: 1, Zeh: 1, Oootsimo: 0 ],
+    kills_by_means: [ MOD_RAILGUN: 2, MOD_ROCKET_SPLASH: 2 ]
+  },
+  'game-17': GameInfo {
+    total_kills: 7,
+    players: [
+      'Dono da Bola',
+      'Oootsimo',
+      'Isgalamido',
+      'Assasinu Credi',
+      'Zeh',
+      'Mal'
+    ],
+    kills: [ Zeh: 2, Isgalamido: 1, 'Assasinu Credi': 2 ],
+    kills_by_means: [ MOD_ROCKET_SPLASH: 4, MOD_ROCKET: 1 ]
+  },
+  'game-18': GameInfo {
+    total_kills: 95,
+    players: [
+      'Isgalamido',
+      'Oootsimo',
+      'Dono da Bola',
+      'Assasinu Credi',
+      'Zeh',
+      'Mal'
+    ],
+    kills: [
+      Zeh: 21,
+      Isgalamido: 13,
+      Oootsimo: 11,
+      'Dono da Bola': 11,
+      'Assasinu Credi': 10,
+      Mal: 8
+    ],
+    kills_by_means: [
+      MOD_ROCKET: 27,
+      MOD_ROCKET_SPLASH: 32,
+      MOD_SHOTGUN: 6,
+      MOD_RAILGUN: 10,
+      MOD_MACHINEGUN: 7
+    ]
+  },
+  'game-19': GameInfo {
+    total_kills: 3,
+    players: [
+      'Isgalamido',
+      'Oootsimo',
+      'Dono da Bola',
+      'Assasinu Credi',
+      'Zeh',
+      'Mal'
+    ],
+    kills: [ 'Dono da Bola': 0, Oootsimo: 1 ],
+    kills_by_means: [ MOD_ROCKET_SPLASH: 2, MOD_ROCKET: 1 ]
+  },
+  'game-20': GameInfo {
+    total_kills: 131,
+    players: [
+      'Isgalamido',
+      'Oootsimo',
+      'Dono da Bola',
+      'Assasinu Credi',
+      'Zeh',
+      'Mal'
+    ],
+    kills: [
+      'Dono da Bola': 12,
+      Zeh: 21,
+      Isgalamido: 19,
+      'Assasinu Credi': 16,
+      Oootsimo: 22,
+      Mal: 12
+    ],
+    kills_by_means: [
+      MOD_ROCKET: 37,
+      MOD_RAILGUN: 9,
+      MOD_ROCKET_SPLASH: 60,
+      MOD_MACHINEGUN: 4,
+      MOD_SHOTGUN: 4
+    ]
+  }
+]
