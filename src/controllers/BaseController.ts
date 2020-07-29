@@ -35,7 +35,8 @@ export default class BaseController {
         response.kills_by_means = { ...response.kills_by_means, [kbmsKeys[i] as any]: kbmValues[i] }
 
 
-      return res.send(JSON.stringify(response))
+      return res.send(JSON.parse(JSON.stringify(response)))
+
     } catch (err) {
       console.log(err.message)
       return res.status(400).send({ message: "Houve um erro ao buscar o jogo.", error: err.message })

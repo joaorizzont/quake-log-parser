@@ -35,9 +35,14 @@ export default class Parser {
 
     }
 
+    public static restValues() {
+        this.result = [];
+        this.rank = []
+    }
 
 
-    public static async Parse(path: string, callback?: Function) {
+
+    public static async Parse(path: string, deploy: string, callback?: Function,) {
         try {
 
             var data: string = '';
@@ -130,13 +135,12 @@ export default class Parser {
                     let gameName: any = `game-${gameCounter - 1}`
                     this.result[gameName].players.forEach((p: any) => {
                         if (!this.rank[p]) {
-                            console.log("NOVO")
+
 
                             let thisGame: number = this.result[gameName].kills[p] as number
                             this.rank[p] = thisGame || 0;
 
                         } else {
-                            console.log("velho")
                             let actual: number = this.rank[p] as number;
                             let thisGame: number = this.result[gameName].kills[p] as number
                             this.rank[p] = actual + thisGame;
@@ -146,11 +150,11 @@ export default class Parser {
             })
 
 
-            fs.writeFile('./src/assets/parsed.txt', util.inspect(this.result), () => { })
-            console.log(this.result, { rank: this.rank })
+            fs.writeFile(deploy, util.inspect(this.result), () => { })
+            // console.log(this.result, { rank: this.rank })
             callback && callback(this.result)
         } catch (err) {
-            console.log(err.message)
+            callback && callback(null, err)
         }
     }
 

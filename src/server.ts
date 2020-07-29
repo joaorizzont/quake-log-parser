@@ -6,26 +6,24 @@ import cors from 'cors'
 
 import router from './routes'
 
-
-
 export default class App {
 
     private app: express.Application;
 
     private constructor() {
         this.app = express();
-        this.middlewares(); 
+        this.middlewares();
         this.routes();
         this.config();
 
     }
 
     private middlewares() {
-        console.log("Mid")
+        // console.log("Mid")
     }
 
     private routes() {
-        console.log("routes")
+        this.app.use('/', router)
     }
 
     public run(port: Number, callback?: () => void): Server {
@@ -37,13 +35,17 @@ export default class App {
         return new App();
     };
 
+    public getApp(): express.Application {
+        return this.app;
+    }
+
 
     private config() {
         this.app.use(bodyParser.json())
         this.app.use(bodyParser.urlencoded({ extended: true }))
         this.app.use(cors())
 
-        this.app.use('/', router)
+
     }
 
 }
