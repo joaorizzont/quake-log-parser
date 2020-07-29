@@ -169,7 +169,7 @@ var Parser = /** @class */ (function () {
                     case 1:
                         _a.sent();
                         fs_1.default.writeFile(deploy, util_1.default.inspect(this.result), function () { });
-                        console.log(this.result, { rank: this.rank });
+                        console.log({ games: this.result }, { rank: this.rank });
                         callback && callback(this.result);
                         return [3 /*break*/, 3];
                     case 2:
