@@ -29,7 +29,7 @@ async function asyncForEach(array: string[], callback: Function) {
 export default class Parser {
 
     public static result: GameInfo[] = [];
-    public static rank: number[] = []
+    public static rank: Object[] = []
 
     public constructor() {
 
@@ -149,13 +149,14 @@ export default class Parser {
                 }
             })
 
-
             fs.writeFile(deploy, util.inspect(this.result), () => { })
-            // console.log(this.result, { rank: this.rank })
+            console.log({ games: this.result }, { rank: this.rank })
             callback && callback(this.result)
         } catch (err) {
             callback && callback(null, err)
         }
+
+
     }
 
 
