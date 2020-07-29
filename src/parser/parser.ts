@@ -193,7 +193,8 @@ export default class Parser {
             }
         })
 
-        fs.writeFile('parsed.txt', util.inspect(this.result), () => { })
+        console.log(__dirname)
+        fs.writeFile('./src/assets/parsed.txt', util.inspect(this.result), () => { })
         callback && callback(this.result)
     }
 
