@@ -26,7 +26,6 @@ async function asyncForEach(array: string[], callback: Function) {
     }
 }
 
-
 export default class Parser {
 
     public static result: GameInfo[] = [];
@@ -135,7 +134,6 @@ export default class Parser {
 
                             let thisGame: number = this.result[gameName].kills[p] as number
                             this.rank[p] = thisGame || 0;
-
 
                         } else {
                             console.log("velho")
