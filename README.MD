@@ -2,7 +2,7 @@
 
 ## How it work
 
-This program uses a <b>.log</b> file create by [Quake game](https://github.com/id-Software/Quake-III-Arena) and <b>Regex</b> to read and create a object with datails of matches.
+This program uses a <b>.log</b> file created by [Quake game](https://github.com/id-Software/Quake-III-Arena) and <b>Regex</b> to read and create a object with datails of matches.
 
 <p>Regex used to identify line with informations of match:</p>
 
@@ -24,7 +24,7 @@ from that, on ClientUserinfoChanged and Kill match, new regex is used to separat
 - "yarn start": run builded server  (Javasrcript)
 - "yarn test": run tests
 
-After run server, a .txt file is generate with the log parsed on path /src/assets/parsed.txt and show result on console.
+After run server, a .txt file is generated with the log parsed on path /src/assets/parsed.txt and show result on console.
 
 ## Endpoints
 

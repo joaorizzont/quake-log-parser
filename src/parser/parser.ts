@@ -44,8 +44,6 @@ export default class Parser {
 
     public static async Parse(path: string, deploy: string, callback?: Function,) {
         try {
-
-            var data: string = '';
             var gameCounter: number = 0;
 
             const killRegExp: RegExp = /Kill:/g
@@ -63,7 +61,6 @@ export default class Parser {
                     let gameName: any = `game-${gameCounter}`
                     gameCounter++
                     this.result[gameName] = new GameInfo();
-                    // console.log("Jogo Iniciado")
                 }
 
                 if (line.match(ClientUserinfoChangedRegExp)) {
@@ -86,21 +83,6 @@ export default class Parser {
                         var by: any = resReg[6]
 
                         this.result[gameName].total_kills += 1;
-
-
-
-                        //Number of kills to player to this game
-                        // if (!this.result[gameName].kills[from] && from !== "<world>" && from !== to)
-                        //     this.result[gameName].kills[from] = 1;
-                        // else {
-                        //     let actual: number = this.result[gameName].kills[from] as number;
-                        //     if (from !== to && from !== "<world>")
-
-                        //     else
-                        //         if (from == '<world>')
-                        //             this.result[gameName].kills[to] = actual - 1;
-                        // }
-
 
                         if (!this.result[gameName].kills[from] && from !== "<world>" && from !== to) {
                             this.result[gameName].kills[from] = 1
@@ -148,10 +130,12 @@ export default class Parser {
                     })
                 }
             })
-            
-            console.log(deploy)
+
             fs.writeFile(deploy, util.inspect(this.result), () => { })
-            console.log({ games: this.result }, { rank: this.rank })
+
+            console.log(this.result)
+            console.log({ rank: this.rank })
+            
             callback && callback(this.result)
         } catch (err) {
             callback && callback(null, err)

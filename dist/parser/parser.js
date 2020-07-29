@@ -81,13 +81,12 @@ var Parser = /** @class */ (function () {
     };
     Parser.Parse = function (path, deploy, callback) {
         return __awaiter(this, void 0, void 0, function () {
-            var data, gameCounter, killRegExp_1, initGameRegExp_1, ShutdownGameRegExp_1, ClientUserinfoChangedRegExp_1, fileContent, FC, err_1;
+            var gameCounter, killRegExp_1, initGameRegExp_1, ShutdownGameRegExp_1, ClientUserinfoChangedRegExp_1, fileContent, FC, err_1;
             var _this = this;
             return __generator(this, function (_a) {
                 switch (_a.label) {
                     case 0:
                         _a.trys.push([0, 2, , 3]);
-                        data = '';
                         gameCounter = 0;
                         killRegExp_1 = /Kill:/g;
                         initGameRegExp_1 = /InitGame:/g;
@@ -100,7 +99,6 @@ var Parser = /** @class */ (function () {
                                     var gameName = "game-" + gameCounter;
                                     gameCounter++;
                                     _this.result[gameName] = new GameInfo();
-                                    // console.log("Jogo Iniciado")
                                 }
                                 if (line.match(ClientUserinfoChangedRegExp_1)) {
                                     var resReg = /n\\(.*)\\t\\/g.exec(line);
@@ -116,16 +114,6 @@ var Parser = /** @class */ (function () {
                                         var to = resReg[5];
                                         var by = resReg[6];
                                         _this.result[gameName].total_kills += 1;
-                                        //Number of kills to player to this game
-                                        // if (!this.result[gameName].kills[from] && from !== "<world>" && from !== to)
-                                        //     this.result[gameName].kills[from] = 1;
-                                        // else {
-                                        //     let actual: number = this.result[gameName].kills[from] as number;
-                                        //     if (from !== to && from !== "<world>")
-                                        //     else
-                                        //         if (from == '<world>')
-                                        //             this.result[gameName].kills[to] = actual - 1;
-                                        // }
                                         if (!_this.result[gameName].kills[from] && from !== "<world>" && from !== to) {
                                             _this.result[gameName].kills[from] = 1;
                                         }
@@ -169,7 +157,8 @@ var Parser = /** @class */ (function () {
                     case 1:
                         _a.sent();
                         fs_1.default.writeFile(deploy, util_1.default.inspect(this.result), function () { });
-                        console.log({ games: this.result }, { rank: this.rank });
+                        console.log(this.result);
+                        console.log({ rank: this.rank });
                         callback && callback(this.result);
                         return [3 /*break*/, 3];
                     case 2:

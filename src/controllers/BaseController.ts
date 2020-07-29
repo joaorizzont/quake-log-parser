@@ -1,5 +1,4 @@
 import { Request, Response } from 'express'
-
 import Parser from '../parser/parser'
 
 export default class BaseController {
@@ -8,7 +7,6 @@ export default class BaseController {
     try {
 
       const game_id: any = req.params.game_id
-
       const result = Parser.result[game_id];
 
       if (!result)
