@@ -1,33 +1,6 @@
 import fs from 'fs'
 import util from 'util'
 
-const meansOfDeath = [
-    'MOD_UNKNOWN',
-    'MOD_SHOTGUN',
-    'MOD_GAUNTLET',
-    'MOD_MACHINEGUN',
-    'MOD_GRENADE',
-    'MOD_GRENADE_SPLASH',
-    'MOD_ROCKET',
-    'MOD_ROCKET_SPLASH',
-    'MOD_PLASMA',
-    'MOD_PLASMA_SPLASH',
-    'MOD_RAILGUN',
-    'MOD_LIGHTNING',
-    'MOD_BFG',
-    'MOD_BFG_SPLASH',
-    'MOD_WATER',
-    'MOD_SLIME',
-    'MOD_LAVA',
-    'MOD_CRUSH',
-    'MOD_TELEFRAG',
-    'MOD_FALLING',
-    'MOD_SUICIDE',
-    'MOD_TARGET_LASER',
-    'MOD_TRIGGER_HURT',
-    'MOD_GRAPPLE'
-]
-
 
 interface IGameInfo {
     total_kills: number,
@@ -36,14 +9,12 @@ interface IGameInfo {
     kills_by_means: Object[],
 }
 
-
 class GameInfo implements IGameInfo {
 
     public total_kills: number = 0;
     public players: string[] = []
     public kills: Object[] = [];
     public kills_by_means: Object[] = []
-
 
     public constructor() {
     }
@@ -58,130 +29,94 @@ async function asyncForEach(array: string[], callback: Function) {
 
 export default class Parser {
 
-    private result: GameInfo[];
+    public static result: GameInfo[] = [];
+    public static rank: number[] = []
 
     public constructor() {
-        this.result = []
+
     }
 
 
-    public async Parse(path: string, callback?: Function) {
 
-        var data: string = '';
-        var gameCounter: number = 0;
+    public static async Parse(path: string, callback?: Function) {
+        try {
 
-        const killRegExp: RegExp = /Kill:/g
-        const initGameRegExp: RegExp = /InitGame:/g
-        const ShutdownGameRegExp: RegExp = /ShutdownGame:/g
-        const ClientUserinfoChangedRegExp: RegExp = /ClientUserinfoChanged:/g
-        // /(n\\)(.*)(\\t\\0)/g
+            var data: string = '';
+            var gameCounter: number = 0;
+
+            const killRegExp: RegExp = /Kill:/g
+            const initGameRegExp: RegExp = /InitGame:/g
+            const ShutdownGameRegExp: RegExp = /ShutdownGame:/g
+            const ClientUserinfoChangedRegExp: RegExp = /ClientUserinfoChanged:/g
 
 
+            var fileContent: string = fs.readFileSync(path, 'utf8');
+            var FC = fileContent.split('\n')
 
-        var fileContent: string = fs.readFileSync(path, 'utf8');
+            await asyncForEach(FC, (line: string): void => {
 
-        // fileContent.split('\n').forEach((line: string): void => {
+                if (line.match(initGameRegExp)) {
+                    let gameName: any = `game-${gameCounter}`
+                    gameCounter++
+                    this.result[gameName] = new GameInfo();
+                    // console.log("Jogo Iniciado")
+                }
 
-        //     if (line.match(initGameRegExp)) {
-        //         var gameName: any = `game-${gameCounter}`
-        //         gameCounter++
-        //         this.result[gameName] = new GameInfo();
-        //         console.log("Jogo Iniciado")
-        //     }
+                if (line.match(ClientUserinfoChangedRegExp)) {
 
-        //     if (line.match(ClientUserinfoChangedRegExp)) {
+                    let resReg = /n\\(.*)\\t\\/g.exec(line);
+                    let gameName: any = `game-${gameCounter - 1}`
 
-        //         let resReg = /n\\(.*)\\t\\/g.exec(line);
-        //         let gameName: any = `game-${gameCounter - 1}`
+                    if (resReg && !this.result[gameName].players.includes(resReg[1]))
+                        this.result[gameName].players.push(resReg[1])
+                }
 
-        //         if (resReg && !this.result[gameName].players.includes(resReg[1]))
-        //             this.result[gameName].players.push(resReg[1])
-        //     }
+                if (line.match(killRegExp)) {
+                    let resReg = /([0-9]+) ([0-9]+) ([0-9]+): (.*) killed (.*) by (.*)/g.exec(line);
+                    let gameName: any = `game-${gameCounter - 1}`
 
-        //     if (line.match(killRegExp)) {
-        //         let resReg = /([0-9]+) ([0-9]+) ([0-9]+): (.*) killed (.*) by (.*)/g.exec(line);
-        //         let gameName: any = `game-${gameCounter - 1}`
+                    if (resReg) {
 
-        //         if (resReg) {
+                        var from: any = resReg[4];
+                        var to: any = resReg[5];
+                        var by: any = resReg[6]
 
-        //             var from: any = resReg[4];
-        //             var to: any = resReg[5];
-        //             var by: any = resReg[6]
-
-        //             this.result[gameName].total_kills += 1;
-
-        //             if (from != "<world>") {
-
-        //                 if (!this.result[gameName].kills[from])
-        //                     this.result[gameName].kills[from] = from == to ? -1 : 1;
-        //                 else {
-        //                     let actual: number = this.result[gameName].kills[from] as number;
-
-        //                     if (from !== "<world>" && from !== to) this.result[gameName].kills[from] = actual + 1;
-        //                     else this.result[gameName].kills[from] = actual - 1;
-        //                 }
+                        this.result[gameName].total_kills += 1;
 
 
 
-        //                 if (!this.result[gameName].kills_by_means[by])
-        //                     this.result[gameName].kills_by_means[by] = 1;
-        //                 else {
-        //                     let actual: number = this.result[gameName].kills_by_means[by] as number;
-        //                     this.result[gameName].kills_by_means[by] = actual + 1;
-        //                 }
-        //             }
-        //         }
-        //     }
+                        //Number of kills to player to this game
+                        // if (!this.result[gameName].kills[from] && from !== "<world>" && from !== to)
+                        //     this.result[gameName].kills[from] = 1;
+                        // else {
+                        //     let actual: number = this.result[gameName].kills[from] as number;
+                        //     if (from !== to && from !== "<world>")
+
+                        //     else
+                        //         if (from == '<world>')
+                        //             this.result[gameName].kills[to] = actual - 1;
+                        // }
 
 
-        //     if (line.match(ShutdownGameRegExp)) { }
-        // })
-
-        var FC = fileContent.split('\n')
-
-        await asyncForEach(FC, (line: string): void => {
-
-            if (line.match(initGameRegExp)) {
-                var gameName: any = `game-${gameCounter}`
-                gameCounter++
-                this.result[gameName] = new GameInfo();
-                // console.log("Jogo Iniciado")
-            }
-
-            if (line.match(ClientUserinfoChangedRegExp)) {
-
-                let resReg = /n\\(.*)\\t\\/g.exec(line);
-                let gameName: any = `game-${gameCounter - 1}`
-
-                if (resReg && !this.result[gameName].players.includes(resReg[1]))
-                    this.result[gameName].players.push(resReg[1])
-            }
-
-            if (line.match(killRegExp)) {
-                let resReg = /([0-9]+) ([0-9]+) ([0-9]+): (.*) killed (.*) by (.*)/g.exec(line);
-                let gameName: any = `game-${gameCounter - 1}`
-
-                if (resReg) {
-
-                    var from: any = resReg[4];
-                    var to: any = resReg[5];
-                    var by: any = resReg[6]
-
-                    this.result[gameName].total_kills += 1;
-
-                    if (from != "<world>") {
-
-                        if (!this.result[gameName].kills[from])
-                            this.result[gameName].kills[from] = from == to ? -1 : 1;
-                        else {
-                            let actual: number = this.result[gameName].kills[from] as number;
-
-                            if (from !== "<world>" && from !== to) this.result[gameName].kills[from] = actual + 1;
-                            else this.result[gameName].kills[from] = actual - 1;
+                        if (!this.result[gameName].kills[from] && from !== "<world>" && from !== to) {
+                            this.result[gameName].kills[from] = 1
                         }
+                        else
+                            if (from !== to && from !== "<world>") {
+                                let actual: number = this.result[gameName].kills[from] as number;
+                                this.result[gameName].kills[from] = actual + 1;
+                            }
+                            else
+                                if (from == "<world>") {
+                                    if (!this.result[gameName].kills[to]) {
+                                        this.result[gameName].kills[to] = -1;
+                                    } else {
+                                        let actual: number = this.result[gameName].kills[to] as number;
+                                        this.result[gameName].kills[to] = actual - 1;
+                                    }
+                                }
 
-
-
+                        //Means of death
                         if (!this.result[gameName].kills_by_means[by])
                             this.result[gameName].kills_by_means[by] = 1;
                         else {
@@ -190,12 +125,35 @@ export default class Parser {
                         }
                     }
                 }
-            }
-        })
 
-        console.log(__dirname)
-        fs.writeFile('./src/assets/parsed.txt', util.inspect(this.result), () => { })
-        callback && callback(this.result)
+
+                if (line.match(ShutdownGameRegExp)) {
+                    let gameName: any = `game-${gameCounter - 1}`
+                    this.result[gameName].players.forEach((p: any) => {
+                        if (!this.rank[p]) {
+                            console.log("NOVO")
+
+                            let thisGame: number = this.result[gameName].kills[p] as number
+                            this.rank[p] = thisGame || 0;
+
+
+                        } else {
+                            console.log("velho")
+                            let actual: number = this.rank[p] as number;
+                            let thisGame: number = this.result[gameName].kills[p] as number
+                            this.rank[p] = actual + thisGame;
+                        }
+                    })
+                }
+            })
+
+
+            fs.writeFile('./src/assets/parsed.txt', util.inspect(this.result), () => { })
+            console.log(this.result, { rank: this.rank })
+            callback && callback(this.result)
+        } catch (err) {
+            console.log(err.message)
+        }
     }
 
 

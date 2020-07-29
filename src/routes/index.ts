@@ -4,12 +4,9 @@ import BaseController from '../controllers/BaseController'
 const router: Router = Router()
 
 //initializing
-
 const baseController = new BaseController()
-
 // ---------
 
-
-router.use('/base', baseController.getGameById)
+router.get('/:game_id', baseController.getGameById)
 
 export default router
